@@ -20,4 +20,4 @@ rewards = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]]
 print(len(rewards), len(rewards[0]))
 rewards = np.array(rewards)
-print(rewards.size(), len(rewards))
+print(len(rewards), len(rewards[0]))
