@@ -43,6 +43,9 @@ def get_route(starting, ending):
                       route.append(next_pos)
                       starting = next_pos
            return route
-res = get_route('A', 'C') + get_route('C', 'G')[1:]
+def get_best_paths(begin, mid, finish):
+           res = get_route(begin, mid) + get_route(mid, finish)[1:]
+           return res
+res = get_best_paths('A', 'F', 'G')
 print(res)
-print(res == ['A', 'B', 'C', 'G'])
+print(res == ['A', 'B', 'F', 'B', 'C', 'G'])
