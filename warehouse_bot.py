@@ -44,6 +44,6 @@ def get_route(starting, ending):
                       route.append(next_pos)
                       starting = next_pos
            return route
-res = get_route('A', 'C') + get_route('C', 'G')[1:]
+res = get_route('A', 'B') + get_route('B', 'G')[1:]
 print(res)
 print(res == ['A', 'B', 'C', 'G'])
