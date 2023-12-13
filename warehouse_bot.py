@@ -39,7 +39,7 @@ def get_route(starting, ending):
            while next_pos != ending:
                       start_state = location_to_state[starting]
                       next_state = np.argmax(Q[start_state, ])
-                      next_pos = state_to_location(Q[next_state, ])
+                      next_pos = state_to_location(next_state)
                       route.append(next_pos)
                       starting = next_pos
            return route
