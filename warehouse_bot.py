@@ -12,12 +12,37 @@ rewards = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0], 
            [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], 
            [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0], 
-           [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0], 
+           [0, 0, 1, 0, 0, 0, 1000, 1, 0, 0, 0, 0], 
            [0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1], 
            [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0], 
            [0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0], 
            [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], 
            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]]
-print(len(rewards), len(rewards[0]))
 rewards = np.array(rewards)
-print(len(rewards), len(rewards[0]))
+
+def get_route(starting, ending):
+           new_rewards = np.copy(rewards)
+           end_pos = location_to_state[ending]
+           new_rewards[end_pos, end_pos] = 1000
+           Q = np.zeros([12, 12])
+           for _ in range(1000):
+                      state = np.random.randint(0, 12)
+                      playable = []
+                      for ind in range(12):
+                                 if Q[state, find] != 0:
+                                            playable.append(ind)
+                      next_state = np.random.choice(playable)
+                      TD = rewards[state, next_state] + gamma * Q[next_state, np.argmax(Q[next_state, ])] - Q[state, next_state]
+                      Q[state, next_state] = Q[state, next_state] + alpha * TD
+           route = [starting]
+           next_pos = starting
+           while next_pos != ending:
+                      start_state = location_to_state[starting]
+                      next_state = np.argmax(Q[start_state, ])
+                      next_pos = state_to_location(Q[next_state, ])
+                      route.append(next_pos)
+                      starting = next_pos
+           return route
+res = get_route('A', 'C') + get_route('C', 'G')[1:]
+print(res)
+print(res == ['A', 'B', 'C', 'G'])
