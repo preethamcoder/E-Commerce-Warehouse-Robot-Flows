@@ -29,7 +29,7 @@ def get_route(starting, ending):
                       state = np.random.randint(0, 12)
                       playable = []
                       for ind in range(12):
-                                 if Q[state, find] != 0:
+                                 if Q[state, ind] != 0:
                                             playable.append(ind)
                       next_state = np.random.choice(playable)
                       TD = rewards[state, next_state] + gamma * Q[next_state, np.argmax(Q[next_state, ])] - Q[state, next_state]
