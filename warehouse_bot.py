@@ -30,7 +30,7 @@ def get_route(starting, ending):
                       playable = []
                       print(state)
                       for ind in range(12):
-                                 if Q[state, ind] != 0:
+                                 if Q[state, ind] > 0:
                                             playable.append(ind)
                       # print(playable)
                       next_state = np.random.choice(playable)
