@@ -46,6 +46,6 @@ def get_route(starting, ending):
 def get_best_paths(begin, mid, finish):
            res = get_route(begin, mid) + get_route(mid, finish)[1:]
            return res
-res = get_best_paths('A', 'F', 'G')
+res = get_best_paths('E', 'F', 'G')
 print(res)
-print(res == ['A', 'B', 'F', 'B', 'C', 'G'])
+print(res == ['E', 'I', 'J', 'F', 'B', 'C', 'G'])
