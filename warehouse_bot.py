@@ -1,6 +1,6 @@
 import numpy as np
 
-alpha = 0.8
+alpha = 0.02
 gamma = 0.75
 
 actions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
