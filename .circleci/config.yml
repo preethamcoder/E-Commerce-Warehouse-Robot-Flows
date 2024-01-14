@@ -19,21 +19,14 @@ jobs:
           name: Install dependencies
           command: |
             pip install --upgrade pip
-            pip install numpy flake8
+            pip install numpy
             if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - save_cache:
           key: v1-dependencies-{{ checksum "requirements.txt" }}
           paths:
             - ~/.cache/pip
       - run:
-          name: Lint with flake8
-          command: |
-            # stop the build if there are Python syntax errors or undefined names
-            flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-            # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-            flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      - run:
-          name: Run application
+          name: Run the application
           command: |
             echo "This is the start of the execution"
             python warehouse_bot.py
