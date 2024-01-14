@@ -13,18 +13,18 @@ jobs:
           name: Set up Python 3.10
           command: |
             echo "python-version: 3.10" >> ~/environment.yml
-      - restore_cache:
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+      # - restore_cache:
+      #     key: v1-dependencies-{{ checksum "requirements.txt" }}
       - run:
           name: Install dependencies
           command: |
             pip install --upgrade pip
             pip install numpy
             if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - save_cache:
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-          paths:
-            - ~/.cache/pip
+      # - save_cache:
+      #     key: v1-dependencies-{{ checksum "requirements.txt" }}
+      #     paths:
+      #       - ~/.cache/pip
       - run:
           name: Run the application
           command: |
